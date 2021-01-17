@@ -1,0 +1,56 @@
+<resources>
+    <string name="app_name">OCR_MLkit</string>
+    <string name="title_activity_o_c_r">OCR</string>
+    <!-- Strings used for fragments for navigation -->
+    <string name="first_fragment_label">First Fragment</string>
+    <string name="second_fragment_label">Second Fragment</string>
+    <string name="next">Next</string>
+    <string name="previous">Previous</string>
+    <string name="hello_first_fragment">Hello first fragment</string>
+    <string name="hello_second_fragment">Hello second fragment. Arg: %1$s</string>
+    <string name="title_activity_edit_photo">EditPhoto</string>
+    <string name="title_activity_pick_and_send">PickAndSend</string>
+    <string name="suma_wydatk_w">Suma wydatków</string>
+    <string name="ulubione_kategorie">Ulubione kategorie</string>
+    <string name="wed_ug_sztuk">Według sztuk</string>
+    <string name="czna">Łączna</string>
+    <string name="w_kategorii">W kategorii:</string>
+    <string name="potwierd_okres_aby_zobaczy">Potwierdź okres aby zobaczyć</string>
+    <string name="potwierd_okres_i_kategorie_aby_zobaczy">Potwierdź okres i kategorie aby zobaczyć</string>
+    <string name="wed_ug_wydatk_w">Według wydatków</string>
+    <string name="dd_mm_rrrr">dd-mm-rrrr</string>
+    <string name="do_">Do:</string>
+    <string name="od_">Od:</string>
+    <string name="wybierz_okres">Wybierz okres i zatwierdź</string>
+    <string name="applicationTitleBar">eParagon</string>
+    <string name="eParagonPickAndSend">eParagon - wybierz i wyślij</string>
+    <string name="eParagonOCR">eParagon - rozpoznawanie tekstu</string>
+    <string name="wybierz_kat">Wybierz kategorię i zatwierdź aby zobaczyć listę produktów</string>
+    <string name="sprawd">Sprawdź</string>
+    <string name="pobierz_tekst">Pobierz tekst</string>
+    <string name="zatwierd">Zatwierdź</string>
+    <string name="dodaj_produkt">Dodaj produkt</string>
+    <string name="wy_lij">Wyślij</string>
+    <string name="kategoria">Kategoria:</string>
+    <string name="period">Period</string>
+    <string name="info">Info</string>
+    <string name="eparagon_wykresy">eParagon - wykresy</string>
+    <string name="infoTip">Po wybraniu/zrobieniu zdjęcia i przejściu dalej pojawi się pole edycji.
+        Należy wybrać obszar paragonu tylko z produktami oraz cenami.
+        Następnie, podczas edycji tekstu nalezy usunąć niepotrzebne znaki.</string>
+
+    <string-array name="categories">
+        <item>Alkohol</item>
+        <item>Drogeria</item>
+        <item>Inne</item>
+        <item>Mięso i ryby</item>
+        <item>Mrożonki i dania gotowe</item>
+        <item>Nabiał</item>
+        <item>Napoje</item>
+        <item>Owoce</item>
+        <item>Produkty zbożowe</item>
+        <item>Słodycze</item>
+        <item>Warzywa</item>
+    </string-array>
+
+</resources>

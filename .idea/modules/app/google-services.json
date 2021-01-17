@@ -1,0 +1,48 @@
+{
+  "project_info": {
+    "project_number": "998163853620",
+    "firebase_url": "https://eparagon-67ded.firebaseio.com",
+    "project_id": "eparagon-67ded",
+    "storage_bucket": "eparagon-67ded.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:998163853620:android:e9c5e5ad8728e5425ff561",
+        "android_client_info": {
+          "package_name": "com.example.ocr_mlkit"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "998163853620-cpqnn6offouqcbkaifjp850s7d4mh05m.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.example.ocr_mlkit",
+            "certificate_hash": "c4143363953050067f9818b34693a6ec716c7304"
+          }
+        },
+        {
+          "client_id": "998163853620-hpb0trt2t7qlqvjr4f2q6cueekgp4b7v.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyBnsZrSLVFqGh5HziZUAgFc4zqlSvMkKbY"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "998163853620-hpb0trt2t7qlqvjr4f2q6cueekgp4b7v.apps.googleusercontent.com",
+              "client_type": 3
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

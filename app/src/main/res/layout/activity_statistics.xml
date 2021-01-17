@@ -1,0 +1,337 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="horizontal"
+    android:background="#FFFFFFFF"
+    tools:context=".Statistics">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_guideline"
+        app:layout_constraintGuide_percent=".01"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_guideline"
+        app:layout_constraintGuide_percent=".99"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_guideline"
+        app:layout_constraintGuide_percent=".01"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_guideline"
+        app:layout_constraintGuide_percent=".99"
+        android:orientation="horizontal"/>
+
+    <TextView
+        android:id="@+id/textViewStatisticsPickPeriod"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/wybierz_okres"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.022"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.005" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsPeriodSince"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/od_"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.015"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsPickPeriod"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextStatisticsPeriodSince"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/dd_mm_rrrr"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewStatisticsPeriodSince"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsPickPeriod"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsPeriodTill"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/do_"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.181"
+        app:layout_constraintStart_toEndOf="@+id/editTextStatisticsPeriodSince"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsPickPeriod"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <EditText
+        android:id="@+id/editTextStatisticsPeriodTill"
+        android:layout_width="wrap_content"
+        android:layout_height="40dp"
+        android:gravity="center"
+        android:text="@string/dd_mm_rrrr"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/textViewStatisticsPeriodTill"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsPickPeriod"
+        app:layout_constraintVertical_bias="0.0" />
+
+    <ImageButton
+        android:id="@+id/imageButtonStatisticsConfirm"
+        android:layout_width="35dp"
+        android:layout_height="41dp"
+        android:background="#FFF"
+        android:paddingLeft="5dp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintStart_toEndOf="@+id/editTextStatisticsPeriodTill"
+        app:layout_constraintTop_toTopOf="parent"
+        app:layout_constraintVertical_bias="0.067"
+        app:srcCompat="@drawable/accept" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsFavCat"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="@string/ulubione_kategorie"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.486"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/editTextStatisticsPeriodTill"
+        app:layout_constraintVertical_bias="0.102"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsSum"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-smallcaps"
+        android:gravity="center"
+        android:text="@string/suma_wydatk_w"
+        android:textAlignment="center"
+        android:textColor="#2196F3"
+        android:textSize="30sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.495"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/imageButtonStatisticsByQuantity"
+        app:layout_constraintVertical_bias="0.211"
+        app:layout_constraintWidth_percent=".8" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsByQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/wed_ug_sztuk"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.179"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsFavCat"
+        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintWidth_percent=".25" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsSumTotal"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/czna"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.499"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsSum"
+        app:layout_constraintVertical_bias="0.063"
+        app:layout_constraintWidth_percent=".25" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsSumCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/w_kategorii"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.247"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsSumTotalShow"
+        app:layout_constraintVertical_bias="0.156"
+        app:layout_constraintWidth_percent=".25" />
+
+    <Spinner
+        android:id="@+id/spinnerStatisticsPickCategory"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:layout_marginStart="8dp"
+        android:layout_marginLeft="8dp"
+        android:background="@drawable/spinner_style"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="20sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintStart_toEndOf="@+id/textViewStatisticsSumCategory"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsSumTotalShow"
+        app:layout_constraintVertical_bias="0.151"
+        app:layout_constraintWidth_percent=".45" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsSumTotalShow"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/potwierd_okres_aby_zobaczy"
+        android:textAlignment="center"
+        android:textColor="#666"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.496"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsSumTotal"
+        app:layout_constraintVertical_bias="0.053"
+        app:layout_constraintWidth_percent=".25" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsShowSumCategory"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/potwierd_okres_i_kategorie_aby_zobaczy"
+        android:textAlignment="center"
+        android:textColor="#666"
+        android:textSize="17sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/spinnerStatisticsPickCategory"
+        app:layout_constraintVertical_bias="0.067"
+        app:layout_constraintWidth_percent=".25" />
+
+    <TextView
+        android:id="@+id/textViewStatisticsByExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#FFFFFFFF"
+        android:editable="false"
+        android:fontFamily="sans-serif-light"
+        android:gravity="center"
+        android:text="@string/wed_ug_wydatk_w"
+        android:textAlignment="center"
+        android:textColor="#000"
+        android:textSize="15sp"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.77"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsFavCat"
+        app:layout_constraintVertical_bias="0.044"
+        app:layout_constraintWidth_percent=".25" />
+
+    <ImageButton
+        android:id="@+id/imageButtonStatisticsByExpenses"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.719"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsByExpenses"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintWidth_percent=".35"
+        app:srcCompat="@drawable/expenses" />
+
+    <ImageButton
+        android:id="@+id/imageButtonStatisticsByQuantity"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:background="#fff"
+        app:layout_constraintBottom_toBottomOf="@+id/bottom_guideline"
+        app:layout_constraintHeight_percent=".05"
+        app:layout_constraintHorizontal_bias="0.2"
+        app:layout_constraintLeft_toLeftOf="@+id/left_guideline"
+        app:layout_constraintRight_toRightOf="@+id/right_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/textViewStatisticsByQuantity"
+        app:layout_constraintVertical_bias="0.02"
+        app:layout_constraintWidth_percent=".35"
+        app:srcCompat="@drawable/quantity" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

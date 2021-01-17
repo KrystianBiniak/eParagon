@@ -1,0 +1,63 @@
+<?xml version="1.0" encoding="utf-8"?>
+<manifest xmlns:android="http://schemas.android.com/apk/res/android"
+    package="com.example.ocr_mlkit">
+
+    <uses-permission android:name="android.permission.CAMERA" />
+
+    <application
+        android:allowBackup="true"
+        android:icon="@mipmap/ic_launcher"
+        android:label="@string/applicationTitleBar"
+        android:roundIcon="@mipmap/ic_launcher_round"
+        android:supportsRtl="true"
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".ShowProductsOnReceipt"
+            android:label="eParagon - produkty z paragonu"/>
+        <activity
+            android:name=".ChartExpenses"
+            android:label="@string/eparagon_wykresy"/>
+        <activity
+            android:name=".ChartQuantity"
+            android:label="@string/eparagon_wykresy"/>
+        <activity
+            android:name=".Statistics"
+            android:label="eParagon - statystyki"/>
+        <activity
+            android:name=".ShowReceipt"
+            android:label="eParagon - wybrany paragon"/>
+        <activity
+            android:name=".Receipts"
+            android:label="eParagon - lista paragonów"/>
+        <activity
+            android:name=".Products"
+            android:label="eParagon - lista produktów"/>
+        <activity
+            android:name=".PickAndSend"
+            android:label="@string/eParagonPickAndSend"
+            android:theme="@style/AppTheme" />
+        <activity
+            android:name=".EditImage"
+            android:label="eParagon - wybierz/zrób zdjęcie"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".Camera" />
+        <activity android:name=".Gallery" />
+        <activity
+            android:name=".OCR"
+            android:label="@string/eParagonOCR"
+            android:theme="@style/AppTheme" />
+        <activity android:name=".MainActivity">
+            <intent-filter>
+                <action android:name="android.intent.action.MAIN" />
+
+                <category android:name="android.intent.category.LAUNCHER" />
+            </intent-filter>
+        </activity>
+        <activity android:name="com.theartofdev.edmodo.cropper.CropImageActivity" />
+
+        <meta-data
+            android:name="preloaded_fonts"
+            android:resource="@array/preloaded_fonts" />
+    </application>
+
+</manifest>
