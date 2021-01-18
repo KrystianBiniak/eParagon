@@ -7,6 +7,8 @@ import androidx.appcompat.app.AppCompatActivity;
 import android.app.DatePickerDialog;
 import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Build;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -71,6 +73,10 @@ public class Receipts extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_receipts);
+
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
 
         //Calendar
         calendar = Calendar.getInstance();
@@ -146,6 +152,11 @@ public class Receipts extends AppCompatActivity {
     }
 
     private void showReceipts() throws ParseException {
+
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
+
         //final View receiptView = inflater.inflate(R.layout.row_show_receipt, layoutReceiptList, false);
 
         sPeriodSince = sdf.parse(periodSince.getText().toString());
@@ -221,6 +232,12 @@ public class Receipts extends AppCompatActivity {
         intent.putExtra("ReceiptTotalSum", totalSum);
         intent.putExtra("Info", receiptInfo);
         startActivity(intent);
+    }
+
+    public boolean checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 

@@ -2,9 +2,13 @@ package com.example.ocr_mlkit;
 
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.graphics.Color;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import com.github.mikephil.charting.charts.BarChart;
 import com.github.mikephil.charting.charts.PieChart;
@@ -52,6 +56,10 @@ public class ChartExpenses extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_chart_expenses);
+
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
 
         categories = getIntent().getStringArrayExtra("Categories");
         expenses = getIntent().getFloatArrayExtra("Expenses");
@@ -118,5 +126,11 @@ public class ChartExpenses extends AppCompatActivity {
         pieChart.getDescription().setEnabled(false);
         pieChart.setCenterText("Kwota [zł]");
         pieChart.animate();
+    }
+
+    public boolean checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

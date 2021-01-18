@@ -3,6 +3,9 @@ package com.example.ocr_mlkit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.text.method.ScrollingMovementMethod;
 import android.view.View;
@@ -44,6 +47,10 @@ public class Products extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_products);
 
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
+
         textViewProducts = findViewById(R.id.textViewTest);
         button = findViewById(R.id.buttonTest);
 
@@ -72,6 +79,11 @@ public class Products extends AppCompatActivity {
     }
 
     private void test() {
+
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
+
         final String selectedCategory = spinnerProduct.getSelectedItem().toString();
         ref = database.getReference().child("Paragony");
         final ArrayList<String> list = new ArrayList<String>();
@@ -135,5 +147,11 @@ public class Products extends AppCompatActivity {
                 //
             }
         });
+    }
+
+    public boolean checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

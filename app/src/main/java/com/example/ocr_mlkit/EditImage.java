@@ -2,10 +2,13 @@ package com.example.ocr_mlkit;
 
 import android.Manifest;
 import android.app.Activity;
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.graphics.drawable.BitmapDrawable;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.net.Uri;
 import android.os.Bundle;
 
@@ -21,6 +24,10 @@ import com.theartofdev.edmodo.cropper.CropImage;
 import com.theartofdev.edmodo.cropper.CropImageView;
 
 import java.io.ByteArrayOutputStream;
+import java.io.File;
+import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
+import java.io.IOException;
 
 public class EditImage extends AppCompatActivity {
 
@@ -41,6 +48,10 @@ public class EditImage extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_edit_image);
+
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
 
         //Buttons
         button_browse = findViewById(R.id.button_browse);
@@ -69,7 +80,11 @@ public class EditImage extends AppCompatActivity {
                     Toast.makeText(EditImage.this, "Brak zdjęcia", Toast.LENGTH_SHORT).show();
                 }
                 else {
-                    sendImageActivity(receivedImageBitmap);
+                    try {
+                        sendImageActivity(receivedImageBitmap);
+                    } catch (IOException e) {
+                        e.printStackTrace();
+                    }
                 }
             }
         });
@@ -98,14 +113,36 @@ public class EditImage extends AppCompatActivity {
                 .start(EditImage.this);
     }
 
-    public void sendImageActivity(Bitmap bitmap){
-        ByteArrayOutputStream stream = new ByteArrayOutputStream();
-        bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
-        byte[] bitmapdata = stream.toByteArray();
+    public void sendImageActivity(Bitmap bitmap) throws IOException {
+        //ByteArrayOutputStream stream = new ByteArrayOutputStream();
+        //bitmap.compress(Bitmap.CompressFormat.JPEG, 100, stream);
+        //byte[] bitmapdata = stream.toByteArray();
+
+        //Create file
+        File file = new File(getApplicationContext().getCacheDir(), "imageOCR");
+
+        //Bitmap to byte array
+        ByteArrayOutputStream outStream = new ByteArrayOutputStream();
+        bitmap.compress(Bitmap.CompressFormat.PNG, 100, outStream);
+        byte[] bitmapdata = outStream.toByteArray();
+
+        //Write bytes to file
+        FileOutputStream fileOutputStream = new FileOutputStream(file);
+        fileOutputStream.write(bitmapdata);
+        fileOutputStream.flush();
+        fileOutputStream.close();
+
 
         Intent intent = new Intent(this, OCR.class);
-        intent.putExtra("Selected image", bitmapdata);
+        //intent.putExtra("Selected image", bitmapdata);
+        intent.putExtra("FileImage", file);
         startActivity(intent);
+    }
+
+    public boolean checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 
 }

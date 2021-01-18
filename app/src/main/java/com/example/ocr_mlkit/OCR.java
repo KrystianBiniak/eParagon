@@ -1,9 +1,12 @@
 package com.example.ocr_mlkit;
 
+import android.content.Context;
 import android.content.Intent;
 import android.graphics.Bitmap;
 import android.graphics.BitmapFactory;
 import android.media.Image;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 
 import com.google.android.gms.tasks.OnFailureListener;
@@ -21,6 +24,7 @@ import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import android.os.FileUtils;
 import android.view.View;
 import android.widget.Button;
 import android.widget.EditText;
@@ -28,6 +32,11 @@ import android.widget.ImageView;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import java.io.BufferedInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.IOException;
 import java.lang.reflect.Array;
 import java.util.List;
 
@@ -89,6 +98,10 @@ public class OCR extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_o_c_r);
 
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
+
         //Button settings
 
         mTextButton = findViewById(R.id.mTextButton);
@@ -133,7 +146,24 @@ public class OCR extends AppCompatActivity {
 
 
         //Receiving image
-        receivedImage = getIntent().getByteArrayExtra("Selected image");
+        //File receivedFile = getIntent().getByteArrayExtra("FileImage")
+        //receivedImage = getIntent().getByteArrayExtra("Selected image");
+        File file = new File(getApplicationContext().getCacheDir(), "imageOCR");
+        int size = (int) file.length();
+        receivedImage = new byte[size];
+        try {
+            BufferedInputStream buf = new BufferedInputStream(new FileInputStream(file));
+            buf.read(receivedImage, 0, receivedImage.length);
+            buf.close();
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+
+        //receivedImage = file.toString().getBytes();
+
         if(receivedImage == null) {
             receivedImageBitmap = BitmapFactory.decodeResource(getResources(),R.drawable.testimage);
             Toast.makeText(OCR.this, "ERROR \n Test image loaded", Toast.LENGTH_SHORT).show();
@@ -240,5 +270,11 @@ public class OCR extends AppCompatActivity {
         Intent intent = new Intent(this, PickAndSend.class);
         intent.putExtra("Text Array", textArray);
         startActivity(intent);
+    }
+
+    public boolean checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

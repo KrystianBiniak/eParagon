@@ -3,7 +3,10 @@ package com.example.ocr_mlkit;
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 
+import android.content.Context;
 import android.content.Intent;
+import android.net.ConnectivityManager;
+import android.net.NetworkInfo;
 import android.os.Bundle;
 import android.widget.TextView;
 import android.widget.Toast;
@@ -40,6 +43,10 @@ public class ShowProductsOnReceipt extends AppCompatActivity {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_show_products_on_receipt);
 
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
+
         textView = findViewById(R.id.textViewSingleReceiptProducts);
         infoTV = findViewById(R.id.textViewSingleReceiptInfo);
 
@@ -56,6 +63,11 @@ public class ShowProductsOnReceipt extends AppCompatActivity {
     }
 
     private void test() {
+
+        if(!checkConnection()) {
+            Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
+        }
+
         ref = database.getReference().child("Paragony").child(date).child(shop).child(totalSum);
 
         ref.addValueEventListener(new ValueEventListener() {
@@ -79,5 +91,11 @@ public class ShowProductsOnReceipt extends AppCompatActivity {
         });
 
 
+    }
+
+    public boolean checkConnection() {
+        ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);
+        NetworkInfo activeNetworkInfo = connectivityManager.getActiveNetworkInfo();
+        return activeNetworkInfo != null && activeNetworkInfo.isConnected();
     }
 }

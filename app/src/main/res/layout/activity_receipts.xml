@@ -103,17 +103,16 @@
 
     <ImageButton
         android:id="@+id/imageButtonStatisticsConfirm"
-        android:layout_width="35dp"
-        android:layout_height="41dp"
+        android:layout_width="64sp"
+        android:layout_height="48sp"
         android:background="#FFF"
-        android:paddingLeft="5dp"
         app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
         app:layout_constraintEnd_toStartOf="@+id/right_guideline"
-        app:layout_constraintHorizontal_bias="0.0"
+        app:layout_constraintHorizontal_bias="0.333"
         app:layout_constraintStart_toEndOf="@+id/editTextStatisticsPeriodTill"
         app:layout_constraintTop_toTopOf="parent"
-        app:layout_constraintVertical_bias="0.067"
-        app:srcCompat="@drawable/accept" />
+        app:layout_constraintVertical_bias="0.06"
+        app:srcCompat="@drawable/tick_mark48px" />
 
     <ScrollView
         android:layout_width="match_parent"
