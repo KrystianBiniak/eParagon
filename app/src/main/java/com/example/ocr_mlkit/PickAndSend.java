@@ -30,12 +30,22 @@ import android.widget.LinearLayout;
 import android.widget.Spinner;
 import android.widget.Toast;
 
+import java.io.BufferedReader;
+import java.io.DataInputStream;
+import java.io.File;
+import java.io.FileInputStream;
+import java.io.FileNotFoundException;
+import java.io.FileReader;
+import java.io.IOException;
+import java.io.InputStreamReader;
 import java.math.RoundingMode;
 import java.text.DecimalFormat;
 import java.text.NumberFormat;
 import java.text.SimpleDateFormat;
+import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.List;
 import java.util.Locale;
 
 public class PickAndSend extends AppCompatActivity {
@@ -91,8 +101,30 @@ public class PickAndSend extends AppCompatActivity {
         }
 
         //Receive string text array
+        //Intent intent = getIntent();
+        //textArray = intent.getStringArrayExtra("Text Array");
         Intent intent = getIntent();
-        textArray = intent.getStringArrayExtra("Text Array");
+        int size = intent.getIntExtra("Size", 0);
+        String text = "";
+        textArray = new String[size];
+        File fileOCRed = new File(getApplicationContext().getCacheDir(), "textOCR");
+        //if(fileOCRed.exists()) Toast.makeText(PickAndSend.this, "File exists", Toast.LENGTH_SHORT).show();
+        //else Toast.makeText(PickAndSend.this, "File does not exists", Toast.LENGTH_SHORT).show();
+
+        try {
+            BufferedReader br = new BufferedReader(new FileReader(fileOCRed));
+            int c;
+            while ((c = br.read()) != -1){
+                text = text + (char)c;
+            }
+            textArray = text.split("\n");
+        } catch (FileNotFoundException e) {
+            e.printStackTrace();
+        } catch (IOException e) {
+            e.printStackTrace();
+        }
+
+        //Toast.makeText(PickAndSend.this, text, Toast.LENGTH_SHORT).show();
 
         //Prices and products array
         if(textArray.length > 0) {

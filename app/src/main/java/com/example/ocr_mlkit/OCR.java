@@ -36,7 +36,9 @@ import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
+import java.io.FileOutputStream;
 import java.io.IOException;
+import java.io.OutputStreamWriter;
 import java.lang.reflect.Array;
 import java.util.List;
 
@@ -118,7 +120,11 @@ public class OCR extends AppCompatActivity {
         sendTextButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                sendText();
+                try {
+                    sendText();
+                } catch (IOException e) {
+                    e.printStackTrace();
+                }
             }
         });
 
@@ -264,12 +270,27 @@ public class OCR extends AppCompatActivity {
 
     }
 
-    private void sendText() {
+    private void sendText() throws IOException {
         text = editOCRText.getText().toString();
         textArray = text.split("\n");
-        Intent intent = new Intent(this, PickAndSend.class);
-        intent.putExtra("Text Array", textArray);
-        startActivity(intent);
+        int size = textArray.length;
+        try {
+            File fileOCRed = new File(getApplicationContext().getCacheDir(), "textOCR");
+            fileOCRed.createNewFile();
+            FileOutputStream outStream = new FileOutputStream(fileOCRed);
+            OutputStreamWriter myOutWriter = new OutputStreamWriter(outStream);
+            myOutWriter.write(text);
+            myOutWriter.close();
+            outStream.close();
+
+            Intent intent = new Intent(this, PickAndSend.class);
+            //intent.putExtra("Text Array", textArray);
+            intent.putExtra("Size", size);
+            startActivity(intent);
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
     }
 
     public boolean checkConnection() {

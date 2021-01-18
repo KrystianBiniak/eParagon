@@ -135,7 +135,7 @@ public class EditImage extends AppCompatActivity {
 
         Intent intent = new Intent(this, OCR.class);
         //intent.putExtra("Selected image", bitmapdata);
-        intent.putExtra("FileImage", file);
+        //intent.putExtra("FileImage", file);
         startActivity(intent);
     }
 
