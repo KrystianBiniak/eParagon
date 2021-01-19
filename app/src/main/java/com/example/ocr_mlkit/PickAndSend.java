@@ -420,6 +420,8 @@ public class PickAndSend extends AppCompatActivity {
                 
                 Intent intent = new Intent(this, MainActivity.class);
                 intent.addFlags(Intent.FLAG_ACTIVITY_CLEAR_TOP);
+                intent.putExtra("Username", username);
+                intent.putExtra("Permission", true);
                 startActivity(intent);
             }
         }
