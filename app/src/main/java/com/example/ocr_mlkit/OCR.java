@@ -91,8 +91,8 @@ public class OCR extends AppCompatActivity {
     //ImageView
     private ImageView imageView;
 
-
-
+    //Username
+    private String username;
 
 
     @Override
@@ -103,6 +103,9 @@ public class OCR extends AppCompatActivity {
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
+
+        //Username
+        username = getIntent().getStringExtra("Username");
 
         //Button settings
 
@@ -285,6 +288,7 @@ public class OCR extends AppCompatActivity {
 
             Intent intent = new Intent(this, PickAndSend.class);
             //intent.putExtra("Text Array", textArray);
+            intent.putExtra("Username", username);
             intent.putExtra("Size", size);
             startActivity(intent);
         } catch (Exception e) {

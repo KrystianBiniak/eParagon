@@ -34,6 +34,7 @@ public class ShowProductsOnReceipt extends AppCompatActivity {
     private String shop;
     private String totalSum;
     private String receiptInfo;
+    private String username;
 
     //Show data from database string
     //private String dataFromDB;
@@ -54,21 +55,21 @@ public class ShowProductsOnReceipt extends AppCompatActivity {
         date = intent.getStringExtra("ReceiptDate");
         shop = intent.getStringExtra("ReceiptShop");
         totalSum = intent.getStringExtra("ReceiptTotalSum");
-        receiptInfo = intent.getStringExtra("Info");
+        username = intent.getStringExtra("Username");
 
-        infoTV.setText(receiptInfo);
+        infoTV.setText(date + " | " + shop + " | " + totalSum + " zł");
 
-        test();
+        showReceipt();
 
     }
 
-    private void test() {
+    private void showReceipt() {
 
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
 
-        ref = database.getReference().child("Paragony").child(date).child(shop).child(totalSum);
+        ref = database.getReference().child("Użytkownicy").child(username).child("Paragony").child(date).child(shop).child(totalSum);
 
         ref.addValueEventListener(new ValueEventListener() {
             String dataFromDB = "";

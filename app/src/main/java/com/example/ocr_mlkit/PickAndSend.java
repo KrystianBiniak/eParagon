@@ -90,6 +90,9 @@ public class PickAndSend extends AppCompatActivity {
     private String[] pricesArray;
     private String[] productsArray;
 
+    //Username
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -99,6 +102,9 @@ public class PickAndSend extends AppCompatActivity {
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
+
+        //Username
+        username = getIntent().getStringExtra("Username");
 
         //Receive string text array
         //Intent intent = getIntent();
@@ -402,9 +408,9 @@ public class PickAndSend extends AppCompatActivity {
                 //sSummary = "333";
 
                 // Write a message to the database - "Paragony"
-                DatabaseReference myRefReceiptProductPrice = database.getReference("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Cena");
-                DatabaseReference myRefReceiptProductQuantity = database.getReference("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Ilość");
-                DatabaseReference myRefReceiptProductCategory = database.getReference("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Kategoria");
+                DatabaseReference myRefReceiptProductPrice = database.getReference("Użytkownicy").child(username).child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Cena");
+                DatabaseReference myRefReceiptProductQuantity = database.getReference("Użytkownicy").child(username).child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Ilość");
+                DatabaseReference myRefReceiptProductCategory = database.getReference("Użytkownicy").child(username).child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Kategoria");
 
                 myRefReceiptProductPrice.setValue(price);
                 myRefReceiptProductQuantity.setValue(quantity);

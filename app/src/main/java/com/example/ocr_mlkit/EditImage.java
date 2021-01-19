@@ -43,6 +43,9 @@ public class EditImage extends AppCompatActivity {
     private ImageButton button_refresh;
     private ImageButton button_browse;
 
+    //Username
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +55,9 @@ public class EditImage extends AppCompatActivity {
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
+
+        //Username
+        username = getIntent().getStringExtra("Username");
 
         //Buttons
         button_browse = findViewById(R.id.button_browse);
@@ -136,6 +142,7 @@ public class EditImage extends AppCompatActivity {
         Intent intent = new Intent(this, OCR.class);
         //intent.putExtra("Selected image", bitmapdata);
         //intent.putExtra("FileImage", file);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 

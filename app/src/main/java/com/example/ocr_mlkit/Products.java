@@ -42,6 +42,9 @@ public class Products extends AppCompatActivity {
     //String array
     private String[] categoryArray;
 
+    //Username
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -50,6 +53,9 @@ public class Products extends AppCompatActivity {
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
+
+        //Username
+        username = getIntent().getStringExtra("Username");
 
         textViewProducts = findViewById(R.id.textViewTest);
         button = findViewById(R.id.buttonTest);
@@ -85,7 +91,7 @@ public class Products extends AppCompatActivity {
         }
 
         final String selectedCategory = spinnerProduct.getSelectedItem().toString();
-        ref = database.getReference().child("Paragony");
+        ref = database.getReference().child("Użytkownicy").child(username).child("Paragony");
         final ArrayList<String> list = new ArrayList<String>();
         final ArrayList<String> listShow = new ArrayList<String>();
         String s1 = "List";

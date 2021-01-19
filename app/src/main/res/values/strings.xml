@@ -38,6 +38,13 @@
     <string name="infoTip">Po wybraniu/zrobieniu zdjęcia i przejściu dalej pojawi się pole edycji.
         Należy wybrać obszar paragonu tylko z produktami oraz cenami.
         Następnie, podczas edycji tekstu nalezy usunąć niepotrzebne znaki oraz pozostawić w osobnych liniach produkty i ceny(osobno). </string>
+    <string name="e_mail">E-mail</string>
+    <string name="has_o">Hasło</string>
+    <string name="zaloguj_si">Zaloguj się</string>
+    <string name="zarejestruj_si">Zarejestruj się</string>
+    <string name="nazwa_u_ytkownika">Nazwa użytkownika</string>
+    <string name="wyloguj_si">Wyloguj się</string>
+    <string name="username">username</string>
 
     <string-array name="categories">
         <item>Alkohol</item>

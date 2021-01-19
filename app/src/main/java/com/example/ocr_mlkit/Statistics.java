@@ -103,6 +103,9 @@ public class Statistics extends AppCompatActivity {
     private String[] categoriesToChartByQuantity;
     private float[] quantityToChartByQuantity;
 
+    //Username
+    private String username;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -111,6 +114,9 @@ public class Statistics extends AppCompatActivity {
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
+
+        //Username
+        username = getIntent().getStringExtra("Username");
 
         //Permission
         permission = false;
@@ -336,7 +342,7 @@ public class Statistics extends AppCompatActivity {
 
         categoryString = categorySpinner.getSelectedItem().toString();
 
-        ref = FirebaseDatabase.getInstance().getReference().child("Paragony");
+        ref = FirebaseDatabase.getInstance().getReference().child("Użytkownicy").child(username).child("Paragony");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override

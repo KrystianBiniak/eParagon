@@ -6,7 +6,6 @@
     <uses-permission android:name="android.permission.ACCESS_NETWORK_STATE" />
     <uses-permission android:name="android.permission.READ_EXTERNAL_STORAGE" />
 
-
     <application
         android:allowBackup="true"
         android:icon="@mipmap/ic_launcher"
@@ -14,27 +13,29 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
+        <activity android:name=".RegisterToDB"></activity>
+        <activity android:name=".LoginToDB" />
         <activity
             android:name=".ShowProductsOnReceipt"
-            android:label="eParagon - produkty z paragonu"/>
+            android:label="eParagon - produkty z paragonu" />
         <activity
             android:name=".ChartExpenses"
-            android:label="@string/eparagon_wykresy"/>
+            android:label="@string/eparagon_wykresy" />
         <activity
             android:name=".ChartQuantity"
-            android:label="@string/eparagon_wykresy"/>
+            android:label="@string/eparagon_wykresy" />
         <activity
             android:name=".Statistics"
-            android:label="eParagon - statystyki"/>
+            android:label="eParagon - statystyki" />
         <activity
             android:name=".ShowReceipt"
-            android:label="eParagon - wybrany paragon"/>
+            android:label="eParagon - wybrany paragon" />
         <activity
             android:name=".Receipts"
-            android:label="eParagon - lista paragonów"/>
+            android:label="eParagon - lista paragonów" />
         <activity
             android:name=".Products"
-            android:label="eParagon - lista produktów"/>
+            android:label="eParagon - lista produktów" />
         <activity
             android:name=".PickAndSend"
             android:label="@string/eParagonPickAndSend"

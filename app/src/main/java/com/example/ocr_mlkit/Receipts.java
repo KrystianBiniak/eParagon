@@ -68,6 +68,9 @@ public class Receipts extends AppCompatActivity {
     //Test counter
     private int counter = 1;
 
+    //Username
+    private String username;
+
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -77,6 +80,9 @@ public class Receipts extends AppCompatActivity {
         if(!checkConnection()) {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
+
+        //Username
+        username = getIntent().getStringExtra("Username");
 
         //Calendar
         calendar = Calendar.getInstance();
@@ -162,7 +168,7 @@ public class Receipts extends AppCompatActivity {
         sPeriodSince = sdf.parse(periodSince.getText().toString());
         sPeriodTill = sdf.parse(periodTill.getText().toString());
 
-        ref = FirebaseDatabase.getInstance().getReference().child("Paragony");
+        ref = FirebaseDatabase.getInstance().getReference().child("Użytkownicy").child(username).child("Paragony");
 
         ref.addValueEventListener(new ValueEventListener() {
             @Override
@@ -199,7 +205,7 @@ public class Receipts extends AppCompatActivity {
                                 receiptView.setOnClickListener(new View.OnClickListener() {
                                     @Override
                                     public void onClick(View v) {
-                                        seeReceipt(sReceiptDate, sReceiptShop, sReceiptTotalSum, receiptInfo);
+                                        seeReceipt(sReceiptDate, sReceiptShop, sReceiptTotalSum, receiptInfo, username);
                                     }
                                 });
                                 layoutReceiptList.addView(receiptView);
@@ -225,12 +231,12 @@ public class Receipts extends AppCompatActivity {
         });
     }
 
-    private void seeReceipt(String date, String shop, String totalSum, String receiptInfo) {
+    private void seeReceipt(String date, String shop, String totalSum, String receiptInfo, String username) {
         Intent intent = new Intent(this, ShowProductsOnReceipt.class);
         intent.putExtra("ReceiptDate", date);
         intent.putExtra("ReceiptShop", shop);
         intent.putExtra("ReceiptTotalSum", totalSum);
-        intent.putExtra("Info", receiptInfo);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 

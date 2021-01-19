@@ -39,9 +39,16 @@ public class MainActivity extends AppCompatActivity {
     private ImageButton button_receipts;
     private ImageButton button_stats;
     private ImageButton button_info;
+    private Button button_login;
+    private Button button_reg;
+    private Button button_logout;
 
-    DatabaseReference reff;
+    //Userinfo
+    private TextView tvUsername;
+    private String username;
 
+    //User permission
+    public boolean permission;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,6 +59,30 @@ public class MainActivity extends AppCompatActivity {
             Toast.makeText(this, "Brak dostępu do internetu", Toast.LENGTH_SHORT).show();
         }
 
+        //Register, loggin & info
+        button_login = (Button) findViewById(R.id.buttonMain_UserInfo);
+        button_reg = (Button) findViewById(R.id.buttonMain_UserRegister);
+        button_logout = (Button) findViewById(R.id.buttonMain_UserLogout);
+        tvUsername = (TextView) findViewById(R.id.textViewMain_Username);
+
+        //Permission, path & info
+        permission = getIntent().getBooleanExtra("Permission", false);
+        username = getIntent().getStringExtra("Username");
+        if(permission) {
+            button_reg.setVisibility(View.INVISIBLE);
+            button_login.setVisibility(View.INVISIBLE);
+            button_logout.setVisibility(View.VISIBLE);
+            tvUsername.setText("Zalogowany jako: \n" + username);
+            tvUsername.setVisibility(View.VISIBLE);
+        }
+        else {
+            button_reg.setVisibility(View.VISIBLE);
+            button_login.setVisibility(View.VISIBLE);
+            button_logout.setVisibility(View.INVISIBLE);
+            tvUsername.setText("username");
+            tvUsername.setVisibility(View.INVISIBLE);
+        }
+
         //Gallery Button listener
 
         button_selectImage = (ImageButton) findViewById(R.id.button_gallery);
@@ -59,8 +90,9 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Opening Gallery", Toast.LENGTH_SHORT).show();
-                selectImageActivity();
+                //Toast.makeText(MainActivity.this, "Opening Gallery", Toast.LENGTH_SHORT).show();
+                if(permission) selectImageActivity();
+                else Toast.makeText(MainActivity.this, "Zaloguj się", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -71,8 +103,9 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Opening Products", Toast.LENGTH_SHORT).show();
-                seeProductsActivity();
+                //Toast.makeText(MainActivity.this, "Opening Products", Toast.LENGTH_SHORT).show();
+                if(permission) seeProductsActivity();
+                else Toast.makeText(MainActivity.this, "Zaloguj się", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -83,8 +116,9 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Opening Receipts", Toast.LENGTH_SHORT).show();
-                seeReceiptsActivity();
+                //Toast.makeText(MainActivity.this, "Opening Receipts", Toast.LENGTH_SHORT).show();
+                if(permission) seeReceiptsActivity();
+                else Toast.makeText(MainActivity.this, "Zaloguj się", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -95,8 +129,9 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Opening Stats", Toast.LENGTH_SHORT).show();
-                seeStatisticsActivity();
+                //Toast.makeText(MainActivity.this, "Opening Stats", Toast.LENGTH_SHORT).show();
+                if(permission) seeStatisticsActivity();
+                else Toast.makeText(MainActivity.this, "Zaloguj się", Toast.LENGTH_SHORT).show();
             }
         });
 
@@ -107,44 +142,67 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
-                Toast.makeText(MainActivity.this, "Opening info", Toast.LENGTH_SHORT).show();
+                //Toast.makeText(MainActivity.this, "Opening info", Toast.LENGTH_SHORT).show();
+            }
+        });
+
+        button_login.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                loginActivity();
+            }
+        });
+
+        button_reg.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                registerActivity();
+            }
+        });
+
+        button_logout.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                Intent intent = new Intent(MainActivity.this, MainActivity.class);
+                intent.putExtra("Permission", false);
+                startActivity(intent);
             }
         });
     }
 
+    public void loginActivity() {
+        Intent intent = new Intent(this, LoginToDB.class);
+        startActivity(intent);
+    }
+
+    public void registerActivity() {
+        Intent intent = new Intent(this, RegisterToDB.class);
+        startActivity(intent);
+    }
+
     public void selectImageActivity(){
         Intent intent = new Intent(this, EditImage.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
     public void seeProductsActivity() {
         Intent intent = new Intent(this, Products.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
     public void seeReceiptsActivity() {
         Intent intent = new Intent(this, Receipts.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
 
     public void seeStatisticsActivity() {
         Intent intent = new Intent(this, Statistics.class);
+        intent.putExtra("Username", username);
         startActivity(intent);
     }
-
-    /*public void test() {
-        // Write a message to the database
-        FirebaseDatabase database = FirebaseDatabase.getInstance();
-        String data = "02-02-2020";
-        String product = "Kapusta 1kg";
-        DatabaseReference myRefPrice = database.getReference("Paragony").child(data).child(product).child("Cena");
-        DatabaseReference myRefQuantity = database.getReference("Paragony").child(data).child(product).child("Ilość");
-
-        myRefPrice.setValue("3,99");
-        myRefQuantity.setValue("3");
-    }
-
-     */
 
     public boolean checkConnection() {
         ConnectivityManager connectivityManager = (ConnectivityManager) getSystemService(Context.CONNECTIVITY_SERVICE);

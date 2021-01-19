@@ -221,4 +221,80 @@
         app:layout_constraintVertical_bias="0.95"
         app:layout_constraintWidth_percent=".5" />
 
+    <Button
+        android:id="@+id/buttonMain_UserInfo"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="@string/zaloguj_si"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/button_stats"
+        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintWidth_percent=".4" />
+
+    <Button
+        android:id="@+id/buttonMain_UserLogout"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="@string/wyloguj_si"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.052"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/button_stats"
+        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintWidth_percent=".4" />
+
+    <Button
+        android:id="@+id/buttonMain_UserRegister"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="@string/zarejestruj_si"
+        android:textColor="#FFF"
+        android:textSize="15sp"
+        android:visibility="visible"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/button_stats"
+        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintWidth_percent=".4" />
+
+    <TextView
+        android:id="@+id/textViewMain_Username"
+        android:layout_width="0dp"
+        android:layout_height="wrap_content"
+        android:background="#FFF"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="@string/username"
+        android:textColor="#222"
+        android:textSize="15sp"
+        android:visibility="invisible"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="0.947"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toBottomOf="@+id/button_stats"
+        app:layout_constraintVertical_bias="0.895"
+        app:layout_constraintWidth_percent=".4" />
+
 </androidx.constraintlayout.widget.ConstraintLayout>
