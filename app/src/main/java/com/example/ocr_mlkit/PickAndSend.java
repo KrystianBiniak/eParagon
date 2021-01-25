@@ -350,7 +350,7 @@ public class PickAndSend extends AppCompatActivity {
         DecimalFormat df = new DecimalFormat("#.00");
         df.setRoundingMode(RoundingMode.CEILING);
 
-        //Get reference
+        //Get database
         FirebaseDatabase database = FirebaseDatabase.getInstance();
 
         //Check shop
@@ -408,9 +408,14 @@ public class PickAndSend extends AppCompatActivity {
                 //sSummary = "333";
 
                 // Write a message to the database - "Paragony"
-                DatabaseReference myRefReceiptProductPrice = database.getReference("Użytkownicy").child(username).child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Cena");
-                DatabaseReference myRefReceiptProductQuantity = database.getReference("Użytkownicy").child(username).child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Ilość");
-                DatabaseReference myRefReceiptProductCategory = database.getReference("Użytkownicy").child(username).child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Kategoria");
+                DatabaseReference myRefReceiptProductPrice = database.getReference("Użytkownicy").child(username).
+                        child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Cena");
+
+                DatabaseReference myRefReceiptProductQuantity = database.getReference("Użytkownicy").child(username).
+                        child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Ilość");
+
+                DatabaseReference myRefReceiptProductCategory = database.getReference("Użytkownicy").child(username).
+                        child("Paragony").child(sDate).child(sShop).child(sSummary).child(product).child("Kategoria");
 
                 myRefReceiptProductPrice.setValue(price);
                 myRefReceiptProductQuantity.setValue(quantity);

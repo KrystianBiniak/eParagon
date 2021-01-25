@@ -16,6 +16,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 import android.view.View;
+import android.widget.EditText;
 import android.widget.ImageButton;
 import android.widget.ImageView;
 import android.widget.Toast;
@@ -101,17 +102,20 @@ public class EditImage extends AppCompatActivity {
     @Override
     protected void onActivityResult(int requestCode, int resultCode, Intent data) {
         super.onActivityResult(requestCode, resultCode, data);
-
         //Get and set image
         CropImage.ActivityResult result = CropImage.getActivityResult(data);
-        uri = result.getUri();
+        try {
+            uri = result.getUri();
+        }
+        catch (Exception e){
+            Toast.makeText(EditImage.this, "Wybierz ponownie", Toast.LENGTH_SHORT).show();
+        }
         imageEditView.setImageURI(uri);
 
         //Retrieve bitmap
         receivedImageBitmapDrawable = (BitmapDrawable) imageEditView.getDrawable();
         receivedImageBitmap = receivedImageBitmapDrawable.getBitmap();
     }
-
 
     public void onChooseFile() {
         CropImage.activity()

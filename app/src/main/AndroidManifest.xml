@@ -13,7 +13,10 @@
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
-        <activity android:name=".RegisterToDB"></activity>
+        <activity
+            android:name=".Info"
+            android:label="eParagon - Info"/>
+        <activity android:name=".RegisterToDB" />
         <activity android:name=".LoginToDB" />
         <activity
             android:name=".ShowProductsOnReceipt"
@@ -28,9 +31,6 @@
             android:name=".Statistics"
             android:label="eParagon - statystyki" />
         <activity
-            android:name=".ShowReceipt"
-            android:label="eParagon - wybrany paragon" />
-        <activity
             android:name=".Receipts"
             android:label="eParagon - lista paragonów" />
         <activity
@@ -44,8 +44,6 @@
             android:name=".EditImage"
             android:label="eParagon - wybierz/zrób zdjęcie"
             android:theme="@style/AppTheme" />
-        <activity android:name=".Camera" />
-        <activity android:name=".Gallery" />
         <activity
             android:name=".OCR"
             android:label="@string/eParagonOCR"

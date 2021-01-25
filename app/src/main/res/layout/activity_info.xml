@@ -1,0 +1,103 @@
+<?xml version="1.0" encoding="utf-8"?>
+<androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    tools:context=".Info">
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/left_guideline"
+        app:layout_constraintGuide_percent=".01"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/right_guideline"
+        app:layout_constraintGuide_percent=".99"
+        android:orientation="vertical"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/top_guideline"
+        app:layout_constraintGuide_percent=".01"
+        android:orientation="horizontal"/>
+
+    <androidx.constraintlayout.widget.Guideline
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:id="@+id/bottom_guideline"
+        app:layout_constraintGuide_percent=".99"
+        android:orientation="horizontal"/>
+
+    <Button
+        android:id="@+id/buttonInfoInfo"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="Informacje o autorze i projekcie"
+        android:textColor="#FFF"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInfoEditText"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.988"
+        app:layout_constraintWidth_percent=".97" />
+
+    <Button
+        android:id="@+id/buttonInfoEditPhoto"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="Przykład edycji zdjęcia"
+        android:textColor="#FFF"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInfoInfo"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintHorizontal_bias="1.0"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.988"
+        app:layout_constraintWidth_percent=".97" />
+
+    <Button
+        android:id="@+id/buttonInfoEditText"
+        android:layout_width="0dp"
+        android:layout_height="30sp"
+        android:background="@drawable/gradient_button"
+        android:fontFamily="@font/cairo"
+        android:gravity="center"
+        android:text="Przykład edycji tekstu"
+        android:textColor="#FFF"
+        android:textSize="13sp"
+        app:layout_constraintBottom_toTopOf="@+id/bottom_guideline"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:layout_constraintVertical_bias="0.989"
+        app:layout_constraintWidth_percent=".97" />
+
+    <ImageView
+        android:id="@+id/imageViewInfo"
+        android:layout_width="0dp"
+        android:layout_height="0dp"
+        app:layout_constraintWidth_percent="0.95"
+        app:layout_constraintHeight_percent="0.8"
+        android:foregroundGravity="center"
+        app:layout_constraintBottom_toTopOf="@+id/buttonInfoEditPhoto"
+        app:layout_constraintEnd_toStartOf="@+id/right_guideline"
+        app:layout_constraintStart_toStartOf="@+id/left_guideline"
+        app:layout_constraintTop_toTopOf="@+id/top_guideline"
+        app:srcCompat="@android:drawable/ic_menu_gallery" />
+
+
+</androidx.constraintlayout.widget.ConstraintLayout>

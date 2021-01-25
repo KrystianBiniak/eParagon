@@ -68,6 +68,8 @@ public class MainActivity extends AppCompatActivity {
         //Permission, path & info
         permission = getIntent().getBooleanExtra("Permission", false);
         username = getIntent().getStringExtra("Username");
+
+
         if(permission) {
             button_reg.setVisibility(View.INVISIBLE);
             button_login.setVisibility(View.INVISIBLE);
@@ -142,6 +144,7 @@ public class MainActivity extends AppCompatActivity {
         {
             @Override
             public void onClick(View v) {
+                infoActivity();
                 //Toast.makeText(MainActivity.this, "Opening info", Toast.LENGTH_SHORT).show();
             }
         });
@@ -201,6 +204,11 @@ public class MainActivity extends AppCompatActivity {
     public void seeStatisticsActivity() {
         Intent intent = new Intent(this, Statistics.class);
         intent.putExtra("Username", username);
+        startActivity(intent);
+    }
+
+    public void infoActivity() {
+        Intent intent = new Intent(this, Info.class);
         startActivity(intent);
     }
 

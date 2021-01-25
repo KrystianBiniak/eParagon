@@ -147,9 +147,9 @@ public class LoginToDB extends AppCompatActivity {
 
     }
 
-    private static String encryptPassword(String password) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
+    private static String encryptPassword(String password) throws NoSuchPaddingException, NoSuchAlgorithmException,
+            InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
         final String ALGORITHM = "AES";
-        //final String KEY = "1Hbfh667adfDEJ78";
         Key key = generateKey();
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, key);
@@ -167,10 +167,10 @@ public class LoginToDB extends AppCompatActivity {
 
     private void checkFields(String email, String password) {
         if (email.isEmpty() && password.isEmpty()) {
-            Toast.makeText(LoginToDB.this, "Podaj email oraz hasło", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginToDB.this, "Podaj login oraz hasło", Toast.LENGTH_SHORT).show();
         }
         else if (email.isEmpty()) {
-            Toast.makeText(LoginToDB.this, "Podaj email", Toast.LENGTH_SHORT).show();
+            Toast.makeText(LoginToDB.this, "Podaj login", Toast.LENGTH_SHORT).show();
         }
         else if (password.isEmpty()) {
             Toast.makeText(LoginToDB.this, "Podaj hasło", Toast.LENGTH_SHORT).show();

@@ -70,11 +70,11 @@ public class ChartQuantity extends AppCompatActivity {
 
         //Colors
         colors = new int[5];
-        colors[0] = Color.parseColor("#b3c6ff");
-        colors[1] = Color.parseColor("#668cff");
+        colors[0] = Color.parseColor("#001a66");
+        colors[1] = Color.parseColor("#0033cc");
         colors[2] = Color.parseColor("#1a53ff");
-        colors[3] = Color.parseColor("#0033cc");
-        colors[4] = Color.parseColor("#001a66");
+        colors[3] = Color.parseColor("#668cff");
+        colors[4] = Color.parseColor("#b3c6ff");
 
         //Charts
         barChart = findViewById(R.id.BarChartQuantity);
@@ -109,7 +109,7 @@ public class ChartQuantity extends AppCompatActivity {
 
         barChart.setFitBars(true);
         barChart.setData(barData);
-        //barChart.getDescription().setText("Bar Chart Example");
+        barChart.getDescription().setText("Kategorie według sztuk");
         barChart.animateY(1500);
 
         //Pie chart set up

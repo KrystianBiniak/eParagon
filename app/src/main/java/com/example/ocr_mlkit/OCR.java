@@ -191,12 +191,11 @@ public class OCR extends AppCompatActivity {
     //MLkit text recognizer
 
     private void runTextRecognition() {
-        //Converting image to Bitmap and MLkit file
+        //Converting image from Bitmap
         InputImage image = InputImage.fromBitmap(receivedImageBitmap, 0);
 
         //Detector
         TextRecognizer detector = TextRecognition.getClient();
-
 
         detector.process(image)
                 .addOnSuccessListener(
@@ -222,18 +221,16 @@ public class OCR extends AppCompatActivity {
         List<Text.TextBlock> blocks = texts.getTextBlocks();
 
         if(blocks.size() == 0) {
-            Toast.makeText(this, "No text found", Toast.LENGTH_SHORT).show();
+            Toast.makeText(this, "Nie znaleziono tekstu", Toast.LENGTH_SHORT).show();
             return;
         }
 
         for(int i = 0; i < blocks.size(); ++i) {
             List<Text.Line> lines = blocks.get(i).getLines();
 
-
             //POSSIBLE BLOCKS RECOGNIZING
             sTextSingleBlock = blocks.get(i).getText();
             sTextBlocks = sTextBlocks + "\n Block " + i + ": " + sTextSingleBlock;
-
 
             for(int j = 0; j < lines.size(); ++j) {
                 List<Text.Element> elements = lines.get(j).getElements();
@@ -242,18 +239,9 @@ public class OCR extends AppCompatActivity {
                 ++counterLines;
                 sLinesCounter = sLinesCounter + counterLines + "\n";
 
-
+                //POSSIBLE ELEMENTS RECOGNITION
                 for(int k = 0; k < elements.size(); ++k) {
                     sTextSingleElement = elements.get(k).getText();
-
-                    /*
-                    POSSIBLE ELEMENTS RECOGNITION
-                    if(ready == true) {
-                        sTextElements = sTextElements + "\n Element " + counterElements + ": " + sTextSingleElement);
-                    }
-                    ++counterElements;
-                    */
-
                 }
             }
         }

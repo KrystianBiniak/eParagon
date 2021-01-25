@@ -178,14 +178,11 @@ public class Receipts extends AppCompatActivity {
                     try {
                         if(!(ds.getKey().isEmpty())) {
                             firebaseMember = sdf.parse(ds.getKey());
-                            //Toast.makeText(Receipts.this, periodSince.getText().toString(), Toast.LENGTH_SHORT).show();
                         }
                     } catch (ParseException e) {
                         e.printStackTrace();
                         Toast.makeText(Receipts.this, "Exception", Toast.LENGTH_SHORT).show();
                     }
-                    //Test toast
-                    //Toast.makeText(Receipts.this, firebaseMember.toString() , Toast.LENGTH_SHORT);
                     counter += 1;
                     if((firebaseMember.after(sPeriodSince) && firebaseMember.before(sPeriodTill))
                             || firebaseMember.equals(sPeriodSince)
@@ -211,12 +208,6 @@ public class Receipts extends AppCompatActivity {
                                 layoutReceiptList.addView(receiptView);
                             }
                         }
-                        //Test toast
-                        //Toast.makeText(Receipts.this, counter, Toast.LENGTH_SHORT).show();
-                        //counter += 1;
-                    }
-                    else {
-                        //Toast.makeText(Receipts.this, "Date compare error", Toast.LENGTH_SHORT).show();
                     }
                 }
                 if(layoutReceiptList.getChildCount() == 0) {

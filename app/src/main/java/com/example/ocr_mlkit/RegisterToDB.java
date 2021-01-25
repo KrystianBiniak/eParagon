@@ -137,7 +137,6 @@ public class RegisterToDB extends AppCompatActivity {
 
     private static String encryptPassword(String password) throws NoSuchPaddingException, NoSuchAlgorithmException, InvalidKeyException, UnsupportedEncodingException, BadPaddingException, IllegalBlockSizeException {
         final String ALGORITHM = "AES";
-        //final String KEY = "1Hbfh667adfDEJ78";
         Key key = generateKey();
         Cipher cipher = Cipher.getInstance(ALGORITHM);
         cipher.init(Cipher.ENCRYPT_MODE, key);

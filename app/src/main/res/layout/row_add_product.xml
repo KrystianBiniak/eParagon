@@ -37,6 +37,7 @@
         app:layout_constraintGuide_percent=".99"
         android:orientation="horizontal"/>
 
+
     <Spinner
         android:id="@+id/spinnerProduct"
         android:layout_width="0dp"
